@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for Win64 (x86_64)
 --
 -- Host: localhost    Database: yeogida
 -- ------------------------------------------------------
--- Server version	5.6.37-log
+-- Server version	5.7.23-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,13 +25,12 @@ DROP TABLE IF EXISTS `productsearch`;
 CREATE TABLE `productsearch` (
   `idx` int(11) NOT NULL AUTO_INCREMENT,
   `search_personpid` int(11) DEFAULT NULL,
-  `search_productpid` varchar(45) DEFAULT NULL,
+  `search_productpid` int(11) DEFAULT NULL,
   PRIMARY KEY (`idx`),
   KEY `productsearch_ibfk_1` (`search_productpid`),
-  KEY `fk_idx_idx` (`search_personpid`),
-  KEY `fk_iidx_idx` (`search_personpid`),
-  CONSTRAINT `fk_iidx` FOREIGN KEY (`search_personpid`) REFERENCES `profile` (`idx`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `productsearch_ibfk_1` FOREIGN KEY (`search_productpid`) REFERENCES `productinfo` (`productpid`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `productsearch_ibfk_2` (`search_personpid`),
+  CONSTRAINT `productsearch_ibfk_1` FOREIGN KEY (`search_productpid`) REFERENCES `productinfo` (`productpid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `productsearch_ibfk_2` FOREIGN KEY (`search_personpid`) REFERENCES `profile` (`personpid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-26 17:13:31
+-- Dump completed on 2018-08-15 13:54:40

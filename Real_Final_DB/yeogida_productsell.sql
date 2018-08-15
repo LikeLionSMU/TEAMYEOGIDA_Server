@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for Win64 (x86_64)
 --
 -- Host: localhost    Database: yeogida
 -- ------------------------------------------------------
--- Server version	5.6.37-log
+-- Server version	5.7.23-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,31 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `productsold`
+-- Table structure for table `productsell`
 --
 
-DROP TABLE IF EXISTS `productsold`;
+DROP TABLE IF EXISTS `productsell`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `productsold` (
+CREATE TABLE `productsell` (
   `idx` int(11) NOT NULL AUTO_INCREMENT,
-  `sold_personpid` int(11) DEFAULT NULL,
-  `sold_productpid` varchar(45) DEFAULT NULL,
+  `seller_personpid` int(11) DEFAULT NULL,
+  `sell_productpid` int(11) DEFAULT NULL,
   PRIMARY KEY (`idx`),
-  KEY `productsold_ibfk_1` (`sold_productpid`),
-  KEY `fk_idx` (`sold_personpid`),
-  CONSTRAINT `fk_idx` FOREIGN KEY (`sold_personpid`) REFERENCES `profile` (`idx`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `productsold_ibfk_1` FOREIGN KEY (`sold_productpid`) REFERENCES `productinfo` (`productpid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `personpid_idx` (`seller_personpid`),
+  KEY `productsell_ibfk_1` (`sell_productpid`),
+  CONSTRAINT `personpid` FOREIGN KEY (`seller_personpid`) REFERENCES `profile` (`personpid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `productsell_ibfk_1` FOREIGN KEY (`sell_productpid`) REFERENCES `productinfo` (`productpid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `productsold`
+-- Dumping data for table `productsell`
 --
 
-LOCK TABLES `productsold` WRITE;
-/*!40000 ALTER TABLE `productsold` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productsold` ENABLE KEYS */;
+LOCK TABLES `productsell` WRITE;
+/*!40000 ALTER TABLE `productsell` DISABLE KEYS */;
+/*!40000 ALTER TABLE `productsell` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-07-26 17:13:31
+-- Dump completed on 2018-08-15 13:54:41
